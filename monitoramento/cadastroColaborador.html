@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>N-Tech</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/cadastroColaborador.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    
+    <div id="navbar"></div>
+
+    <div class="cabecalho container">
+      <div class="esquerda">
+        <h1>Gerenciar colaboradores</h1>
+      </div>
+
+      <div class="direita">
+          <button type="button" class="btn btn-success botao" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus"></i>  Adicionar colaborador</button>
+          <button type="button" class="btn btn-primary botao"><i class="bi bi-funnel"></i>  Filtros</button>
+        </div>
+
+        <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Colaborador</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Perfil</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Detalhes</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Configurações</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+            <div class="mb-3" style="margin-top: 10px;">
+              <label for="formFile" class="form-label">Foto de perfil</label>
+              <input class="form-control" type="file" id="formFile">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Login</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nome de usuario">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Cargo</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Cargo do colaborador">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Contato</label>
+              <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Exemplo: (00) 90000-0000">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">E-mail</label>
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="nome@exemplo.com">
+            </div>
+          </div>
+          <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+            <div class="mb-3"  style="margin-top: 10px;">
+              <label for="exampleFormControlInput1" class="form-label">Tipo de usuario</label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Selecione o tipo de usuário</option>
+              <option value="1">VENDEDOR</option>
+              <option value="2">MANUTENÇÃO</option>
+              <option value="3">QUALIDADE</option>
+            </select>
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Tipo de Check in</label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Selecione o tipo de check in</option>
+              <option value="1">MANUAL</option>
+              <option value="2">AUTOMATICO</option>
+            </select>
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Senha</label>
+              <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Senha de acesso">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Confirmar Senha</label>
+              <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Confirmar senha de acesso">
+            </div>
+            <hr>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"><strong>Jornada de trabalho</strong></label>
+              <p style="color: #6A889B">Intervalo de tempo em que o monitoramento estará ativo</p>
+              <div class="diasSemana1 container">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Domingo
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Segunda
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Terça
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Quarta
+                  </label>
+                </div>
+                </div>
+                <div class="diasSemana2 container">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Quinta
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Sexta
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Sábado
+                  </label>
+                </div>
+              </div>
+              <label for="exampleFormControlInput1" class="form-label" style="margin-top: 10px;">Horários</label>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Início/Termino de expediente:</label>
+                <div class="hora container">
+                  <input type="time" class="form-control" id="exampleFormControlInput1" placeholder="">
+                  <label for="" class="ate">ATÉ</label>
+                  <input type="time" class="form-control" id="exampleFormControlInput1" placeholder="">
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Início/Termino de intervalo:</label>
+                <div class="hora container">
+                  <input type="time" class="form-control" id="exampleFormControlInput1" placeholder="">
+                  <label for="" class="ate">ATÉ</label>
+                  <input type="time" class="form-control" id="exampleFormControlInput1" placeholder="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label" style="margin-top: 10px;"><strong>Tarefas</strong></label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode criar tarefas
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Todos os tipos de tarefas
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode executar tarefas
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode editar tarefas
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode excluir tarefas
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode pausar tarefas
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode reagendar tarefas
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode utilizar fotos da galeria em tarefas
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode editar tarefas após o check-out
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode fazer o check-out manual em tarefas com pendências
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode fazer check-in manual com check-out pendente em outra tarefa
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode Preencher relatório sem fazer check-in
+                </label>
+              </div>
+            </div>
+            <hr>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label" style="margin-top: 10px;"><strong>Colaboradores</strong></label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode alterar ponto base
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode cadastrar/editar clientes
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode acessar equipamentos
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode criar tarefas
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode criar tarefas
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode criar tarefas
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode criar tarefas
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode criar tarefas
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode criar tarefas
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Pode criar tarefas
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Salvar Colaborador</button>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+    </div>
+
+    <div class="conteudo container">
+      <div class="card">
+        <div class="card-body">
+          <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Telefone/Login</th>
+                <th scope="col">Cargo</th>
+                <th scope="col">Tipo de usuário</th>
+                <th scope="col">Check in</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="perfilCompleto.html" class="perfilCompleto">João Victor dos Santos Ricardo</a></td>
+                <td>joaov.nigro</td>
+                <td>Vendedor Hunter</td>
+                <td>Gestor de equipe</td>
+                <td>Manual</td>
+                <td><button class="btn btn-danger"><i class="bi bi-trash"></i>  Remover</button></td>
+              </tr>
+              <tr>
+                <td>Alef MGBA</td>
+                <td>alef.mgba</td>
+                <td>MANUTENÇÃO</td>
+                <td>Gestor de equipe</td>
+                <td>Manual</td>
+                <td><button class="btn btn-danger"><i class="bi bi-trash"></i>  Remover</button></td>
+              </tr>
+              <tr>
+                <td>Anastacio (PE)</td>
+                <td>anastacio.nigro</td>
+                <td>MANUTENÇÃO</td>
+                <td>Usuário</td>
+                <td>Manual</td>
+                <td><button class="btn btn-danger"><i class="bi bi-trash"></i>  Remover</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+      $(function(){
+          $('#navbar').load("src/navbar.html");
+      });
+  </script>
+  
+  
+  </body>
+</html>

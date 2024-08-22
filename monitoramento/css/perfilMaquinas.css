@@ -1,0 +1,110 @@
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #EEF5F8;
+}
+
+.menususpenso {
+    padding: 20px;
+    display: flex;
+}
+
+.bloco {
+    padding: 15px;
+}
+
+.blocoItem {
+    text-decoration: none;
+    color: black;
+    
+}
+
+.blocoItem:hover {
+    color: dodgerblue;
+    font-weight: bold;
+}
+
+.dropdown-item:hover {
+    color: dodgerblue;
+    font-weight: bold;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.direita {
+    display: flex;
+}
+
+.botao {
+    margin-right: 10px;
+}
+
+.conteudo {
+    margin-top: 40px;
+}
+
+.separacao2 {
+    display: flex;
+}
+
+.diasSemana1 {
+    display: flex;
+}
+
+.diasSemana2 {
+    display: flex;
+    margin-top: 10px;
+}
+
+.form-check {
+    margin-right: 10px;
+}
+
+.hora {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ate {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.perfilCompleto {
+    text-decoration: none;
+}
+
+.dias {
+    display: flex;
+}
+
+.bi-check-lg {
+    border: 1px solid black;
+    border-radius: 100px;
+}
+
+.tarefa {
+    display: flex;
+}
+
+.opcoes-tarefas {
+    display: flex;
+}
+
+@media screen and (max-width: 800px) {
+    .menususpenso {
+        flex-direction: column;
+    }
+
+    .cabecalho {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+}

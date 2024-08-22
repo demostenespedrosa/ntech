@@ -1,0 +1,17 @@
+.saudacao {
+    margin-top: 30px;
+}
+
+.cartoes {
+    margin-top: 100px;
+}
+
+.tela {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+}

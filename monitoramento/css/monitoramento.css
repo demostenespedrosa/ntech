@@ -1,0 +1,80 @@
+body {
+    font-family: "Inter", sans-serif;
+}
+
+.menususpenso {
+    padding: 20px;
+    display: flex;
+}
+
+.bloco {
+    padding: 15px;
+}
+
+.blocoItem {
+    text-decoration: none;
+    color: black;
+    
+}
+
+.blocoItem:hover {
+    color: dodgerblue;
+    font-weight: bold;
+}
+
+.dropdown-item:hover {
+    color: dodgerblue;
+    font-weight: bold;
+}
+
+/* Profile Picture */
+.profile-pic{
+    display: inline-block;
+    vertical-align: middle;
+     width: 50px;
+     height: 50px;
+     overflow: hidden;
+    border-radius: 50%;
+ }
+ 
+ .profile-pic img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+ }
+ .profile-menu .dropdown-menu {
+   right: 0;
+   left: unset;
+ }
+ .profile-menu .fa-fw {
+   margin-right: 10px;
+ }
+ 
+ .toggle-change::after {
+   border-top: 0;
+   border-bottom: 0.3em solid;
+ }
+
+ #map {
+    height: 100vh; /* Altura total da tela */
+    width: 100%;    /* Largura total da tela */
+}
+
+.cartoes {
+    margin-top: 120px;
+    justify-content: center;
+}
+
+.col-2 {
+    margin-right: 10px;
+}
+
+.card-body {
+    justify-content: center;
+    align-items: center;
+}
+@media screen and (max-width: 800px) {
+    .menususpenso {
+        flex-direction: column;
+    }
+}

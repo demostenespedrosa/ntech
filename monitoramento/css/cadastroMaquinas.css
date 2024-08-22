@@ -1,0 +1,29 @@
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #EEF5F8;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cartoes {
+   justify-content: space-around;
+}
+
+.pesquisa {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.barra {
+    width: 70%;
+}
+
+.input-group {
+    width: 30%;
+}
