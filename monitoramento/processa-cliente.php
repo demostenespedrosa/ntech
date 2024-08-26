@@ -1,6 +1,9 @@
 <?php
 include_once("../banco.php");
 
+// Diretório onde as imagens serão salvas
+$diretorio = "../assets/uploads/";
+
 $nome = $_POST['nome'];
 $email = $_POST['email'];
 $telefone = $_POST['telefone'];
@@ -10,10 +13,10 @@ $CPFouCNPJ = $_POST['CPFouCNPJ'];
 $razao = $_POST['razao'];
 $endereco = $_POST['endereco'];
 $responsavel = $_POST['responsavel'];
-$telefoneColaborador = $_POST['	telefoneColaborador'];
+$telefoneColaborador = $_POST['	telefoneResponsavel'];
 $logo = $_POST['logo'];
 
-$result_usuario = "INSERT INTO clientes (nome, email, telefone, id, matricula, CPFouCNPJ, razao, endereco, responsavel, telefoneColaborador, logo) VALUES ('$nome', '$email', '$telefone', '$id', '$matricula', '$CPFouCNPJ', '$razao', '$endereco', '$responsavel', '$telefoneColaborador', '$logo')";
+$result_usuario = "INSERT INTO clientes (nome, email, telefone, id, matricula, CPFouCNPJ, razao, endereco, responsavel, telefoneResponsavel, logo) VALUES ('$nome', '$email', '$telefone', '$id', '$matricula', '$CPFouCNPJ', '$razao', '$endereco', '$responsavel', '$telefoneResponsavel', '$logo')";
 $resultado_usuario = mysqli_query($conn, $result_usuario);
 
 if(mysqli_insert_id($conn)){

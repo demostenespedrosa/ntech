@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/cadastroColaborador.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="../assets/images/logo-fav.ico" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     </head>
   <body>
@@ -30,7 +31,8 @@
         <h1>Detalhes do operador</h1>
       </div>
       <div class="direita">
-          <button type="button" class="btn btn-warning botao" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pencil-square"></i>  Editar operador</button>
+      <button type="button" class="btn btn-warning botao" data-bs-toggle="modal" data-bs-target="#ModalBloqueio"><i class="bi bi-lock-fill"></i>  Bloquear</button>
+          <button type="button" class="btn btn-success botao" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pencil-square"></i>  Editar operador</button>
           <button type="button" data-bs-toggle="modal" data-bs-target="#Modal2" class="btn btn-danger botao"><i class="bi bi-trash3"></i>  Excluir operador</button>
         </div>
 
@@ -121,6 +123,24 @@
 </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="ModalBloqueio" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Bloquear operador</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Realmente deseja bloquear esse operador?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-warning"><i class="bi bi-lock-fill"></i>  Bloquear operador</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
 
     <div class="container" style="margin-top: 30px;">
     <div class="container">
@@ -164,7 +184,12 @@
                     <div class="col">
                         <h4>Indicadores de Atividade</h4>
                     </div>
+                
                 </div>
+              <div class="alert alert-success col-12" role="alert" style="display: flex; justify-content: center; align-itens: center;">
+              <p>Status do operador:  ATIVO</strong></p>
+              </div>
+              <hr class="container col-8">
                 <div class="row my-2">
                     <div class="col-md-6 py-1">
                         <div class="card">
@@ -292,6 +317,5 @@
           }
         });
         </script>
-    <script src="https://unpkg.com/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

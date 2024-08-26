@@ -1,5 +1,10 @@
 <?php
 include_once("../banco.php");
+
+// Diretório onde as imagens serão salvas
+$diretorio = "uploads/";
+
+
 ?>
 
 
@@ -13,7 +18,8 @@ include_once("../banco.php");
   <link rel="stylesheet" href="css/cadastroColaborador.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-  </head>
+  <link rel="shortcut icon" href="../assets/images/logo-fav.ico" />  
+</head>
   <body>
     
     <div id="navbar"></div>
@@ -40,7 +46,7 @@ include_once("../banco.php");
         <form action="processa-cliente.php" method="post">
         <div class="mb-3">
             <label for="formFile" class="form-label">Logo da empresa</label>
-            <input class="form-control" type="file" id="formFile">
+            <input class="form-control" name="logo" type="file" id="formFile">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Matrícula</label>
@@ -102,7 +108,6 @@ include_once("../banco.php");
                 <th scope="col">Email</th>
                 <th scope="col">Telefone</th>
                 <th scope="col">Endereço</th>
-                <th scope="col">Quantidade de maquinas</th>
                 <th scope="col">Ações</th>
               </tr>
             </thead>
@@ -119,9 +124,8 @@ include_once("../banco.php");
         echo "<td>" . $row_usuario['email'] . "</td>";
         echo "<td>" . $row_usuario['telefone'] . "</td>";
         echo "<td>" . $row_usuario['endereco'] . "</td>";
-        echo "<td>" . $row_usuario['quantidadeMaquinas'] . "</td>";
         echo "<td>
-                <a href='perfilOperador.php?id=" . $row_usuario['id'] . "'>Detalhes</a>
+                <a href='perfilCliente.php?id=" . $row_usuario['id'] . "'>Detalhes</a>
               </td>";
         echo "</tr>";
     }
