@@ -271,7 +271,7 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA4VwZ_qmxw4oaaGIKcjjw96TapvECfXU&callback=initMap"></script>
     <script>
       $(function(){
-          $('#navbar').load("src/navbar.html");
+          $('#navbar').load("src/navbar.php");
       });
     </script>
     <script>
