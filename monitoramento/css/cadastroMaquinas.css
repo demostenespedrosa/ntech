@@ -27,3 +27,10 @@ body {
 .input-group {
     width: 30%;
 }
+
+@media screen and (max-width: 800px) {
+    .cabecalho {
+        display: flex;
+        flex-direction: column;
+    }
+}

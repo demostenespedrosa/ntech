@@ -1,11 +1,11 @@
 <?php
 include_once("../banco.php");
 
-$nome = $_POST['nome'];
-$id = $_POST['id'];
+$titulo = $_POST['titulo'];
+$descricao = $_POST['descricao'];
 
 
-$result_usuario = "INSERT INTO tipodechecklist (nome, id) VALUES ('$nome', '$id')";
+$result_usuario = "INSERT INTO tipodechecklist (titulo, descricao) VALUES ('$titulo', '$descricao')";
 $resultado_usuario = mysqli_query($conn, $result_usuario);
 
 if(mysqli_insert_id($conn)){

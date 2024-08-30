@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="../assets/images/logo-fav.ico" />
+  <link rel="stylesheet" href="css/card.css">
    <style>
     /* Estilo para a div que vai conter o mapa */
     #map {
@@ -210,7 +211,7 @@
                                 echo "<td>" . $row_usuario['nome'] . "</td>";
                                 echo "<td>" . $row_usuario['status'] . "</td>";
                                 echo "<td>
-                                        <a href='perfilMaquina.php?id=" . $row_usuario['id'] . "'>Detalhes</a>
+                                        <a href='perfilMaquina.php?id=" . $row_usuario['id'] . "'class=btn btn-warning'>Detalhes</a>
                                       </td>";
                                 echo "</tr>";
                             }

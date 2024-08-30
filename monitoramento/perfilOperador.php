@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="../assets/images/logo-fav.ico" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <link rel="stylesheet" href="css/card.css">
     </head>
   <body>
 
@@ -181,16 +182,31 @@
             <div class="card-body p-4">
               <div class="container">
                 <div class="row my-3">
-                    <div class="col">
-                        <h4>Indicadores de Atividade</h4>
-                    </div>
-                
-                </div>
-              <div class="alert alert-success col-12" role="alert" style="display: flex; justify-content: center; align-itens: center;">
-              <p>Status do operador:  ATIVO</strong></p>
-              </div>
-              <hr class="container col-8">
-                <div class="row my-2">
+
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">...</div>
+  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">...</div>
+  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
+  <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+</div>
+
+
+<div class="row my-2">
                     <div class="col-md-6 py-1">
                         <div class="card">
                             <div class="card-body">
@@ -229,7 +245,26 @@
                         </div>
                     </div>
                 </div>
-            </div>
+
+
+
+<div class="tab-content" id="myTabContent">
+<div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+
+  
+  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+    teste
+  </div>
+</div>
+
+
+
+
+
+
+
+
+                    
               
             </div>
           </div>
@@ -262,7 +297,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
       <script>
       $(function(){
-          $('#navbar').load("src/navbar.html");
+          $('#navbar').load("src/navbar.php");
       });
     </script>
     <script>

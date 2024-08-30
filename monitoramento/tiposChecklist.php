@@ -13,6 +13,7 @@ include_once("../banco.php");
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="../assets/images/logo-fav.ico" />  
+  <link rel="stylesheet" href="css/card.css">
 </head>
   <body>
     
@@ -37,12 +38,17 @@ include_once("../banco.php");
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+    
         <form action="processa-tiposchecklist.php" method="post">
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Nome do tipo de checklist</label>
-              <input type="text" class="form-control" required id="exampleFormControlInput1" name="nome" placeholder="Exemplo: Banheiro">
+              <label for="exampleFormControlInput1" class="form-label">Nome do checklist</label>
+              <input type="text" class="form-control" name="titulo" required id="exampleFormControlInput1" name="nome" placeholder="Exemplo: Título">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Descrição do checklist</label>
+              <textarea class="form-control" name="descricao" placeholder="Exemplo: Descrição do Questionário"></textarea>
             </div>
           </div>
       </div>
@@ -76,9 +82,9 @@ include_once("../banco.php");
 
     while($row_usuario = mysqli_fetch_assoc($resultado_usuarios)){
         echo "<tr>";
-        echo "<td>" . $row_usuario['nome'] . "</td>";
+        echo "<td>" . $row_usuario['titulo'] . "</td>";
         echo "<td>
-                <a href='perfilMotivoChecklist.php?id=" . $row_usuario['id'] . "'>Detalhes</a>
+                <a href='perfilChecklist.php?id=" . $row_usuario['id'] . "' class=btn btn-warning'>  Detalhes</a>
               </td>";
         echo "</tr>";
     }

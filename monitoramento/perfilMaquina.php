@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../../ntech/monitoramento/css/perfilMaquinas.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   <link rel="shortcut icon" href="../assets/images/logo-fav.ico" />
+  <link rel="stylesheet" href="css/card.css">
   <style>
     /* Estilo para a div que vai conter o mapa */
     #map {
@@ -154,11 +155,20 @@
     // Obtém o ID do usuário da URL
     $id = $_GET['id'];
 
-    // Busca as informações do usuário
-    $result_usuario = "SELECT * FROM maquinas WHERE id='$id'";
-    $resultado_usuario = mysqli_query($conn, $result_usuario);
-    $row_usuario = mysqli_fetch_assoc($resultado_usuario);
-    ?>
+    // Consulta para obter os detalhes da máquina
+$sql = "SELECT * FROM maquinas WHERE id = $id";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $nome = $row["nome"];
+    $status = $row["status"];
+    $novoStatus = $status == 'ativo' ? 'inativo' : 'ativo';
+
+?>
+
+
+
     <div id="navbar"></div>
 
     <div class="cabecalho container">
@@ -167,7 +177,18 @@
       </div>
 
       <div class="direita">
-        <button type="button" class="btn btn-warning botao" data-bs-toggle="modal" data-bs-target="#ModalBloqueio"><i class="bi bi-lock-fill"></i>  Bloquear</button>
+      <form method="POST" action="alterar_status.php">
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
+        <input type="hidden" name="status" value="<?php echo $novoStatus; ?>">
+        <button type="submit" class="btn btn-warning botao" data-bs-toggle="modal" data-bs-target="#ModalBloqueio"><i class="bi bi-lock-fill"></i>  Tornar <?php echo ucfirst($novoStatus); ?></button>
+    </form>
+    <?php
+} else {
+    echo "Nenhuma máquina encontrada.";
+}
+
+$conn->close();
+?>
           <button type="button" class="btn btn-success botao" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pencil-square"></i>  Editar máquina</button>
           <button type="button" class="btn btn-danger botao"  data-bs-toggle="modal" data-bs-target="#Modal2"><i class="bi bi-trash3"></i>  Excluir máquina</button>
         </div>
@@ -257,6 +278,7 @@
                   </div>
       </div>
     </div>
+
     <div class="container" style="margin-top: 30px;">
     <div class="container">
       <div class="row gy-4 gy-lg-0">
@@ -269,16 +291,16 @@
                   <div class="text-center mb-3">
                     <img src="../assets/images/pr17.jpg" class="img-fluid rounded-circle" alt="">
                   </div>
-                  <h5 class="text-center mb-1"><?php echo $row_usuario['modelo']; ?></h5>
-                  <p class="text-center text-secondary mb-4"><?php echo $row_usuario['nome']; ?></p>
+                  <h5 class="text-center mb-1"><?php echo $row['modelo']; ?></h5>
+                  <p class="text-center text-secondary mb-4"><?php echo $row['nome']; ?></p>
                   <ul class="list-group list-group-flush mb-4">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                       <h6 class="m-0"><strong>Matrícula</strong></h6>
-                      <span><?php echo $row_usuario['matricula']; ?></span>
+                      <span><?php echo $row['matricula']; ?></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                       <h6 class="m-0"><strong>Cliente</strong></h6>
-                      <span><?php echo $row_usuario['cliente']; ?></span>
+                      <span><?php echo $row['cliente']; ?></span>
                     </li>
                   </ul>
                   
@@ -306,7 +328,7 @@
               <h3 style="margin-top: 10px;" class="col-10">Relatórios em tempo real</h3>
               <div class="row justify-content-center" style="margin-top: 30px;">
               <div class="alert alert-success col-10" role="alert" style="display: flex; justify-content: center; align-itens: center;">
-              <p>Status do dispositivo:  <strong><?php echo $row_usuario['status']; ?></strong></p>
+              <p>Status do dispositivo:  <strong><?php echo $row['status']; ?></strong></p>
               </div>
               <hr class="container col-8">
                 <div class="card col-5" style="margin-right: 20px;">
@@ -400,7 +422,7 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA4VwZ_qmxw4oaaGIKcjjw96TapvECfXU&callback=initMap"></script>
     <script>
       $(function(){
-          $('#navbar').load("src/navbar.html");
+          $('#navbar').load("src/navbar.php");
       });
     </script>
     <script>

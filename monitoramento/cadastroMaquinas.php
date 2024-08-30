@@ -16,6 +16,7 @@ include_once("../banco.php");
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../assets/images/logo-fav.ico" />
     <link rel="stylesheet" href="../monitoramento/css/cadastroMaquinas.css">
+    <link rel="stylesheet" href="css/card.css">
 </head>
 <body>
     <div id="navbar"></div>
@@ -107,7 +108,7 @@ include_once("../banco.php");
         echo "<td>" . $row_usuario['modelo'] . "</td>";
         echo "<td>" . $row_usuario['cliente'] . "</td>";
         echo "<td>
-                <a href='perfilMaquina.php?id=" . $row_usuario['id'] . "'>Detalhes</a>
+                <a href='perfilMaquina.php?id=" . $row_usuario['id'] . "' class='btn btn-warning'>Detalhes</a>
               </td>";
         echo "</tr>";
     }

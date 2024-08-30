@@ -1,7 +1,3 @@
-<?php
-include_once("../banco.php");
-?>
-
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -16,45 +12,27 @@ include_once("../banco.php");
   <link rel="stylesheet" href="css/card.css">
 </head>
   <body>
+
+  <?php
+    include_once("../banco.php");
+
+
+    // Obtém o ID do usuário da URL
+    $id = $_GET['id'];
+    $nome_grupo = $_GET['nome'];
+
+    ?>
     
     <div id="navbar"></div>
 
     <div class="cabecalho container">
       <div class="esquerda">
-        <h1>Grupos de acesso</h1>
+        <h1><?php echo $nome_grupo?></h1>
       </div>
 
       <div class="direita">
-          <button type="button" class="btn btn-success botao" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus"></i>  Adicionar grupo de acesso</button>
           <button type="button" class="btn btn-primary botao"><i class="bi bi-funnel"></i>  Filtros</button>
         </div>
-
-        <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar grupo de acesso</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="processa-gruposdeacesso.php" method="post">
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Nome do grupo</label>
-              <input type="text" class="form-control" required id="exampleFormControlInput1" name="nome" placeholder="Exemplo: MASTER">
-            </div>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <input type="submit" class="btn btn-success" value="Adicionar motivo de pausa">
-      </div>
-    </form>
-    </div>
-  </div>
-</div>
-        
       </div>
     </div>
 
@@ -65,21 +43,30 @@ include_once("../banco.php");
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Nome</th>
+              <th scope="col">Matricula</th>
+              <th scope="col">Nome</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Endereço</th>
                 <th scope="col">Ações</th>
               </tr>
             </thead>
             <tbody>
 
               <?php
-    $result_usuarios = "SELECT * FROM gruposdeacesso";
-    $resultado_usuarios = mysqli_query($conn, $result_usuarios);
+    // Consulta para buscar os clientes pertencentes ao grupo
+ $query = "SELECT * FROM clientes WHERE grupos = '" . mysqli_real_escape_string($conn, $nome_grupo) . "'";
+ $resultado_clientes = mysqli_query($conn, $query);
 
-    while($row_usuario = mysqli_fetch_assoc($resultado_usuarios)){
+ while($row_cliente = mysqli_fetch_assoc($resultado_clientes)){
         echo "<tr>";
-        echo "<td>" . $row_usuario['nome'] . "</td>";
+        echo "<td>" . htmlspecialchars($row_cliente['matricula']) . "</td>";
+        echo "<td>" . htmlspecialchars($row_cliente['nome']) . "</td>";
+        echo "<td>" . htmlspecialchars($row_cliente['email']) . "</td>";
+        echo "<td>" . htmlspecialchars($row_cliente['telefone']) . "</td>";
+        echo "<td>" . htmlspecialchars($row_cliente['endereco']) . "</td>";
         echo "<td>
-                <a href='perfilGrupoDeAcesso.php?id=" . $row_usuario['id'] . "' class='btn btn-warning'>Detalhes</a>
+                <a href='perfilCliente.php?id=" . $row_cliente['id'] . "'class=btn btn-warning'>Detalhes</a>
               </td>";
         echo "</tr>";
     }

@@ -1,7 +1,3 @@
-<?php
-include_once("../banco.php");
-?>
-
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -12,20 +8,32 @@ include_once("../banco.php");
   <link rel="stylesheet" href="css/cadastroColaborador.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-  <link rel="shortcut icon" href="../assets/images/logo-fav.ico" />
-  <link rel="stylesheet" href="css/card.css">  
+  <link rel="shortcut icon" href="../assets/images/logo-fav.ico" />  
+  <link rel="stylesheet" href="css/card.css">
 </head>
   <body>
     
     <div id="navbar"></div>
 
+    <?php
+    include_once("../banco.php");
+
+    // Obtém o ID do usuário da URL
+    $id = $_GET['id'];
+
+    // Busca as informações do usuário
+    $result_usuario = "SELECT * FROM tipodechecklist WHERE id='$id'";
+    $resultado_usuario = mysqli_query($conn, $result_usuario);
+    $row_usuario = mysqli_fetch_assoc($resultado_usuario);
+    ?>
+
     <div class="cabecalho container">
       <div class="esquerda">
-        <h1>Gerenciar grupos de operadores</h1>
+        <h1><?php echo $row_usuario['titulo']; ?></h1>
       </div>
 
       <div class="direita">
-          <button type="button" class="btn btn-success botao" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus"></i>  Adicionar grupo de operadores</button>
+          <button type="button" class="btn btn-success botao" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus"></i>  Adicionar pergunta</button>
           <button type="button" class="btn btn-primary botao"><i class="bi bi-funnel"></i>  Filtros</button>
         </div>
 
@@ -34,27 +42,41 @@ include_once("../banco.php");
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar grupo de operadores</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar pergunta</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="processa-grupoOperador.php" method="post">
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+
+      <form action="salvar_pergunta.php" method="POST">
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">Nome do grupo</label>
-              <input type="text" class="form-control" required id="exampleFormControlInput1" name="nome" placeholder="Exemplo: Gerência">
+                <label for="pergunta" class="form-label">Pergunta</label>
+                <input type="text" class="form-control" id="pergunta" name="pergunta" required>
             </div>
+            
             <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">Descrição do grupo</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" name="descricao" rows="3" placeholder="Exemplo: Uma descrição breve de que grupo é esse."></textarea>
+                  <label for="grupo_maquinas" class="form-label">Grupo de Máquinas</label>
+                  <select class="form-select" id="gruposmaquinas" name="gruposmaquinas[]" multiple required>
+                      <?php
+                      // Loop para exibir os grupos de máquinas disponíveis
+                      foreach ($gruposmaquinas as $grupo) {
+                          echo "<option value='{$grupo['id']}'>{$grupo['nome_grupo']}</option>";
+                      }
+                      ?>
+                  </select>
             </div>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <input type="submit" class="btn btn-success" value="Adicionar grupo de operadores">
-      </div>
-    </form>
+            
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="bloqueia_maquina" name="bloqueia_maquina">
+                <label class="form-check-label" for="bloqueia_maquina">
+                    Bloqueia a máquina se a resposta for "Não está em bom funcionamento"
+                </label>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Adicionar Pergunta</button>
+        </form>
+    </div>
+    
+        
     </div>
   </div>
 </div>
@@ -69,23 +91,22 @@ include_once("../banco.php");
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Descrição</th>
+                <th scope="col">Pergunta</th>
+                <th scope="col">Resposta</th>
                 <th scope="col">Ações</th>
               </tr>
             </thead>
             <tbody>
 
               <?php
-    $result_usuarios = "SELECT * FROM gruposoperadores";
+    $result_usuarios = "SELECT * FROM perguntaschecklist";
     $resultado_usuarios = mysqli_query($conn, $result_usuarios);
 
     while($row_usuario = mysqli_fetch_assoc($resultado_usuarios)){
         echo "<tr>";
-        echo "<td>" . $row_usuario['nome'] . "</td>";
-        echo "<td>" . $row_usuario['descricao'] . "</td>";
+        echo "<td>" . $row_usuario['titulo'] . "</td>";
         echo "<td>
-                <a href='perfilGrupoOperador.php?id=" . $row_usuario['id'] . "&nome=" . urlencode($row_usuario['nome']) . "' class='btn btn-warning'>Detalhes</a>
+                <a href='perfilMotivoChecklist.php?id=" . $row_usuario['id'] . "' class=btn btn-danger'>Excluir</a>
               </td>";
         echo "</tr>";
     }

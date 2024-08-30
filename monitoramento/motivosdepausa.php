@@ -13,6 +13,7 @@ include_once("../banco.php");
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="../assets/images/logo-fav.ico" />  
+  <link rel="stylesheet" href="css/card.css">
 </head>
   <body>
     
@@ -78,7 +79,9 @@ include_once("../banco.php");
         echo "<tr>";
         echo "<td>" . $row_usuario['nome'] . "</td>";
         echo "<td>
-                <a href='deletarMotivosdePausa.php?id=" . $row_usuario['id'] . "'>Excluir</a>
+                <a href='deletarMotivosdePausa.php?id=" . $row_usuario['id'] . "' class='btn btn-danger'>
+                <i class='bi bi-trash3'></i>  Excluir
+                </a>
               </td>";
         echo "</tr>";
     }
